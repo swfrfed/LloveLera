@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днём Рождения, Лера!</title>
+    <style>
+        /* Основные стили */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(45deg, #ff99cc, #ffccff, #ffb3ff);
+            background-size: 300% 300%;
+            animation: gradientBG 10s infinite ease-in-out;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1, h2, p {
+            text-shadow: 2px 2px 4px #ff66cc;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-top: 50px;
+            animation: fadeIn 3s ease-out;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        p {
+            font-size: 1.8rem;
+            margin: 10px;
+            animation: fadeInUp 4s ease-out;
+        }
+
+        /* Анимации текста */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        /* Сердечки */
+        .heart {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: red;
+            transform: rotate(45deg);
+            animation: floatHeart 6s infinite ease-in-out;
+            opacity: 0.8;
+        }
+
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -25px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -25px;
+            top: 0;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(45deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10%) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        /* Блестки */
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: gold;
+            border-radius: 50%;
+            animation: sparkleEffect 3s infinite ease-in-out;
+        }
+
+        @keyframes sparkleEffect {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>С Днём Рождения, Лера!</h1>
+    <h2>Ты - лучик света в моей жизни! ✨</h2>
+    <p>Пусть каждый твой день будет волшебным!</p>
+    <p>С любовью, твой Никита ❤️</p>
+
+    <script>
+        /* Функция для создания сердечек */
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 4 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 6000);
+        }
+
+        /* Функция для создания блесток */
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.animationDuration = Math.random() * 2 + 2 + 's';
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => sparkle.remove(), 3000);
+        }
+
+        /* Запуск эффектов */
+        setInterval(createHeart, 500);
+        setInterval(createSparkle, 300);
+    </script>
+</body>
+</html>
